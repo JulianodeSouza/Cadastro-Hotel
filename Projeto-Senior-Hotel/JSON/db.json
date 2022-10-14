@@ -1,0 +1,17 @@
+{
+  "pessoa": [
+    {
+      "nome": "Fulano",
+      "documento": "123456",
+      "telefone": "991234567",
+      "id": 1
+    },
+    {
+      "nome": "Paulo",
+      "documento": "123456789",
+      "telefone": "123456789878",
+      "id": 2
+    }
+  ],
+  "checkIn": []
+}
