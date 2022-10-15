@@ -1,1 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+/** Bootstrap Import */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+/** Global */
+* {
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+/** Cards */
+.container {
+  margin: auto;
+
+  .card-header {
+    background-color: #0d6efd;
+    color: #FFFF;
+    font-size: 20px;
+  }
+
+  .card-body {
+    margin-right: 100px;
+  }
+}
+
+.btn-new {
+  &:hover {
+    box-shadow:
+      1px 1px #53a7ea,
+      2px 2px #53a7ea,
+      3px 3px #53a7ea;
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+  }
+}
+
+/** Campos Obrigatórios*/ 
+.text-danger {
+  color: #ff0000;
+}

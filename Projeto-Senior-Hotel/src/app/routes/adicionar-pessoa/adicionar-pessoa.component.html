@@ -1,0 +1,40 @@
+<div class="container">
+  <button type="button" class="btn-new btn btn-primary mt-2" [routerLink]="['']">Voltar</button>
+
+
+  <div class="card mt-5">
+    <div class="card-header">
+      Novo Hóspede
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+          <form>
+            <div class="row">
+              <div class="col-lg-6 col-sm-12">
+                <div>
+                  <label>Nome<span class="text-danger">*</span></label>
+                  <input class="form-control" type="text" name="nome" [(ngModel)]="iForm.nome">
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-12">
+                <div>
+                  <label>Documento<span class="text-danger">*</span></label>
+                  <input class="form-control" type="text" name="documento" [(ngModel)]="iForm.documento">
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-12">
+                <div>
+                  <label>Telefone<span class="text-danger">*</span></label>
+                  <input class="form-control" type="text" name="telefone" [(ngModel)]="iForm.telefone">
+                </div>
+              </div>
+            </div>
+
+            <button type="button" class="btn-new btn btn-primary mt-4" (click)="salvarHospede()">Salvar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

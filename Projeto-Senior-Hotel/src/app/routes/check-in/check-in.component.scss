@@ -1,0 +1,11 @@
+.text {
+    padding-left: 5px;
+}
+
+.filtros {
+    flex-wrap: nowrap;
+
+    .radio-filtros {
+        width: 20%;
+    }
+}
