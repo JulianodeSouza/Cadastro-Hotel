@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CheckInComponent } from './routes/check-in/check-in.component';
 import { AdicionarPessoaComponent } from './routes/adicionar-pessoa/adicionar-pessoa.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AdicionarPessoaComponent } from './routes/adicionar-pessoa/adicionar-pe
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule
   ],

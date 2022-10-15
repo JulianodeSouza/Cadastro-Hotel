@@ -17,7 +17,7 @@ export class CheckInComponent {
     dataSaida: string,
     adicionalVeiculo: boolean,
     hospedado: boolean,
-    pessoa: ObjPessoa
+    pessoa_documento: string
   }
 
   /** Variavel para preencher tabela */
@@ -34,25 +34,41 @@ export class CheckInComponent {
       dataSaida: '',
       adicionalVeiculo: false,
       hospedado: true,
-      pessoa: {
-        nome: '',
-        documento: '',
-        telefone: '',
-      }
+      pessoa_documento: ''
     }
 
     this.iHospedes = [];
+
+
+    this.iHospedes.push(
+      {
+
+        nome: 'Juliano',
+        documento: '123456',
+        telefone: '55992355991',
+
+      },
+      {
+        nome: 'Jordana',
+        documento: '556987',
+        telefone: '',
+      }
+
+
+
+    )
   }
 
   /** Funcao para buscar hospedes */
   public searchHospedes() {
 
+    console.log(this.iForm);
 
 
   }
 
 
-/** Função para salvar o checkIn */
+  /** Função para salvar o checkIn */
   public salvarCheckIn() {
 
 
