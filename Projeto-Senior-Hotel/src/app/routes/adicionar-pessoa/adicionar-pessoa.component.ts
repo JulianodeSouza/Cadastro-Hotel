@@ -40,18 +40,15 @@ export class AdicionarPessoaComponent {
     this.cRequest.pessoasService('POST', false, this.iForm)
       .subscribe(($retorno: any) => {
         if ($retorno) {
-          alert("Funcionou");
-        } else {
+          alert("Hóspede incluído com sucesso!");
 
+          this.inst();
         }
-      }, (($error: any) => {
-
-      }))
+      })
 
   }
 
   public voltar() {
     this.iRouter.navigate(['/']);
   }
-
 }

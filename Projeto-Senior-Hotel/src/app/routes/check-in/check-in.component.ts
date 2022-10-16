@@ -38,39 +38,14 @@ export class CheckInComponent {
     }
 
     this.iHospedes = [];
-
-
-    this.iHospedes.push(
-      {
-
-        nome: 'Juliano',
-        documento: '123456',
-        telefone: '55992355991',
-
-      },
-      {
-        nome: 'Jordana',
-        documento: '556987',
-        telefone: '',
-      }
-
-
-
-    )
   }
 
   /** Funcao para buscar hospedes */
   public searchHospedes() {
-
-    console.log(this.iForm);
-
-
   }
 
 
   /** Função para salvar o checkIn */
   public salvarCheckIn() {
-
-
   }
 }

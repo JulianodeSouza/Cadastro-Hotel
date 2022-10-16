@@ -1,4 +1,17 @@
 {
-  "pessoas": [],
+  "pessoas": [
+    {
+      "nome": "Gabriela Ester Carvalho",
+      "documento": "151.318.116-51",
+      "telefone": "(83) 2671-4064",
+      "id": 1
+    },
+    {
+      "nome": "Marcos Ricardo Castro",
+      "documento": "227049482",
+      "telefone": "(27) 2993-8582",
+      "id": 2
+    }
+  ],
   "checkIn": []
 }
