@@ -32,23 +32,22 @@ export class AdicionarPessoaComponent {
       nome: '',
       documento: '',
       telefone: '',
-    }
-  }
+    };
+  };
 
   /** Funcao para salvar hospede */
   public salvarHospede() {
-    this.cRequest.pessoasService('POST', false, this.iForm)
+    this.cRequest.pessoasService('POST', this.iForm)
       .subscribe(($retorno: any) => {
         if ($retorno) {
           alert("Hóspede incluído com sucesso!");
 
           this.inst();
         }
-      })
-
+      });
   }
 
   public voltar() {
     this.iRouter.navigate(['/']);
-  }
+  };
 }

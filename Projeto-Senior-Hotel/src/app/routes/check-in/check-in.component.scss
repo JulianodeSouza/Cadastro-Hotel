@@ -1,11 +1,18 @@
 .text {
-    padding-left: 5px;
+  padding-left: 5px;
 }
 
 .filtros {
-    flex-wrap: nowrap;
+  flex-wrap: nowrap;
 
-    .radio-filtros {
-        width: 20%;
-    }
+  .radio-filtros {
+    width: 20%;
+  }
+}
+
+.aviso-cadastro {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+  color: rgba(128, 128, 128, 0.445);
 }

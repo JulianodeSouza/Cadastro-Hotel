@@ -27,9 +27,9 @@
 						<div class="row align-items-center mt-3">
 							<div class="col-lg-6 col-sm-12">
 								<label>Pessoa</label>
-								<select class="form-select"  name="pessoa_documento" [(ngModel)]="iForm.pessoa_documento" (change)="searchHospedes()">
-									<option value="''">Selecione</option>
-									<option *ngFor="let wHospede of iHospedes" value="wHospede.documento">{{wHospede.nome}}</option>
+								<select class="form-select" name="pessoa" [(ngModel)]="iForm.pessoa.nome">
+									<option [value]="''" selected>Selecione</option>
+									<option *ngFor="let wPessoa of iPessoas" [value]="wPessoa.nome">{{wPessoa.nome}}</option>
 								</select>
 							</div>
 							<div class="col-lg-6 col-sm-12 mt-3">
@@ -40,14 +40,14 @@
 							</div>
 						</div>
 
-						<button type="button" class="btn-new btn btn-primary mt-4" (click)="salvarCheckIn()">Salvar</button>
+						<button type="button" class="btn-new btn btn-primary mt-4" (click)="saveCheckIn()">Salvar</button>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="card mt-5" *ngIf="iHospedes.length > 0">
+	<div class="card mt-5">
 		<div class="card-header">
 			Consultas
 		</div>
@@ -58,17 +58,23 @@
 
 					<div class="row filtros">
 						<div class="radio-filtros">
-							<input class="form-check-input" type="radio" value="true" [(ngModel)]="iForm.hospedado" checked>
+							<input class="form-check-input" type="radio" [(ngModel)]="iFiltros" value="true" (change)="searchHospedes(true)">
 							<label class="text">Pessoas ainda presentes</label>
 						</div>
 
 						<div>
-							<input class="form-check-input" type="radio" value="false" [(ngModel)]="iForm.hospedado">
+							<input class="form-check-input" type="radio" [(ngModel)]="iFiltros" value="false" (change)="searchHospedes(false)">
 							<label class="text">Pessoas que já deixaram o hotel</label>
 						</div>
 					</div>
 
-					<table class="table mt-3">
+					<div class="aviso-cadastro" *ngIf="iHospedes.length == 0">
+						<h1>
+							Nenhum registro encontrado!
+						</h1>
+					</div>
+
+					<table class="table mt-3" *ngIf="iHospedes.length > 0">
 						<thead>
 							<tr>
 								<th scope="col">Nome</th>
@@ -78,9 +84,9 @@
 						</thead>
 						<tbody>
 							<tr *ngFor="let wHospede of iHospedes">
-								<td>{{wHospede.nome}}</td>
-								<td>{{wHospede.documento}}</td>
-								<td>{{wHospede.valor_gasto}}</td>
+								<td>{{wHospede.pessoa.nome}}</td>
+								<td>{{wHospede.pessoa.documento}}</td>
+								<td>{{wHospede.valorGasto}}</td>
 							</tr>
 						</tbody>
 					</table>

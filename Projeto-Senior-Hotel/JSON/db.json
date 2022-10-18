@@ -1,17 +1,31 @@
 {
   "pessoas": [
     {
-      "nome": "Gabriela Ester Carvalho",
-      "documento": "151.318.116-51",
-      "telefone": "(83) 2671-4064",
+      "nome": "Juliano Rafael de Souza",
+      "documento": "60274813076",
+      "telefone": "55992355991",
       "id": 1
     },
     {
-      "nome": "Marcos Ricardo Castro",
-      "documento": "227049482",
-      "telefone": "(27) 2993-8582",
+      "nome": "Jordana de Oliveira Lino",
+      "documento": "55897897946",
+      "telefone": "55991813418",
       "id": 2
     }
   ],
-  "checkIn": []
+  "checkIn": [
+    {
+      "dataEntrada": "2022-10-18T20:15",
+      "dataSaida": "",
+      "adicionalVeiculo": true,
+      "hospedado": true,
+      "pessoa": {
+        "nome": "Juliano Rafael de Souza",
+        "documento": "60274813076",
+        "telefone": "55992355991"
+      },
+      "valorGasto": 0,
+      "id": 1
+    }
+  ]
 }
