@@ -27,16 +27,31 @@
 						<div class="row align-items-center mt-3">
 							<div class="col-lg-6 col-sm-12">
 								<label>Pessoa</label>
-								<select class="form-select" name="pessoa" [(ngModel)]="iForm.pessoa.nome">
-									<option [value]="''" selected>Selecione</option>
-									<option *ngFor="let wPessoa of iPessoas" [value]="wPessoa.nome">{{wPessoa.nome}}</option>
-								</select>
+								<input class="form-control" type="text" name="pesquisa" [(ngModel)]="iPesquisa" (change)="buscaPessoa(iPesquisa)">
 							</div>
 							<div class="col-lg-6 col-sm-12 mt-3">
 								<div>
 									<input type="checkbox" name="adicionalVeiculo" [(ngModel)]="iForm.adicionalVeiculo">
 									<label class="text">Possui veículo?</label>
 								</div>
+							</div>
+						</div>
+
+						<div class="row mt-4" *ngIf="iPessoaBuscada.length > 0">
+							<div class="col-lg-6 col-sm-12">
+								<label>Hóspede</label>
+								<select class="form-select" name="pessoa" [(ngModel)]="iForm.pessoa.nome" [disabled]="true">
+									<option *ngFor="let wPessoa of iPessoaBuscada" [value]="wPessoa.nome">{{wPessoa.nome}}</option>
+								</select>
+							</div>
+							<div class="col-lg-6 col-sm-12">
+								<label>Documento</label>
+								<input class="form-control" type="text" name="documento" [(ngModel)]="iForm.pessoa.documento"
+									mask="000.000.000-00" disabled>
+							</div>
+							<div class="col-lg-6 col-sm-12 mt-3">
+								<label>Telefone</label>
+								<input class="form-control" type="tel" name="telefone" [(ngModel)]="iForm.pessoa.telefone" disabled>
 							</div>
 						</div>
 
@@ -52,46 +67,50 @@
 			Consultas
 		</div>
 		<div class="card-body">
-			<div class="row">
-				<div class="col-12">
-					<p>Filtrar por:</p>
+			<div class="col-12">
+				<p>Filtrar por:</p>
 
-					<div class="row filtros">
-						<div class="radio-filtros">
-							<input class="form-check-input" type="radio" [(ngModel)]="iFiltros" value="true" (change)="searchHospedes(true)">
-							<label class="text">Pessoas ainda presentes</label>
-						</div>
-
-						<div>
-							<input class="form-check-input" type="radio" [(ngModel)]="iFiltros" value="false" (change)="searchHospedes(false)">
-							<label class="text">Pessoas que já deixaram o hotel</label>
-						</div>
+				<div class="d-flex">
+					<div class="radio-filtros">
+						<input class="form-check-input" type="radio" [(ngModel)]="iFiltros" [value]="true" (change)="searchHospedes(true)">
+						<label class="text">Pessoas ainda presentes</label>
 					</div>
 
-					<div class="aviso-cadastro" *ngIf="iHospedes.length == 0">
-						<h1>
-							Nenhum registro encontrado!
-						</h1>
+					<div class="radio-filtros-space">
+						<input class="form-check-input" type="radio" [(ngModel)]="iFiltros" [value]="false" (change)="searchHospedes(false)">
+						<label class="text">Pessoas que já deixaram o hotel</label>
 					</div>
-
-					<table class="table mt-3" *ngIf="iHospedes.length > 0">
-						<thead>
-							<tr>
-								<th scope="col">Nome</th>
-								<th scope="col">Documento</th>
-								<th scope="col">Valor Gasto (R$)</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let wHospede of iHospedes">
-								<td>{{wHospede.pessoa.nome}}</td>
-								<td>{{wHospede.pessoa.documento}}</td>
-								<td>{{wHospede.valorGasto}}</td>
-							</tr>
-						</tbody>
-					</table>
 				</div>
 			</div>
+
+			<div class="warning-qtdCadastros" *ngIf="iHospedes.length == 0">
+				<h1>
+					Nenhum registro encontrado!
+				</h1>
+			</div>
+
+			<table class="table mt-3" *ngIf="iHospedes.length > 0">
+				<thead>
+					<tr>
+						<th scope="col">Nome</th>
+						<th scope="col">Documento</th>
+						<th scope="col">Valor Gasto (R$)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let wHospede of iHospedes">
+						<td>{{wHospede.pessoa.nome}}</td>
+						<td>{{wHospede.pessoa.documento | mask: '000.000.000-00'}}</td>
+						<td>{{wHospede.valorGasto | currency}}</td>
+					</tr>
+				</tbody>
+
+				<!-- <ul class="pagination-table pagination mt-2 pagination-sm">
+						<li class="page-item"><a class="page-link" href="#">Anterior</a></li>
+						<li class="page-item"><a class="page-link" href="#">Próximo</a></li>
+					</ul> -->
+			</table>
 		</div>
+
 	</div>
 </div>

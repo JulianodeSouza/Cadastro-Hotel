@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
 import { EMPTY, Observable } from 'rxjs';
 import { catchError, map } from "rxjs/operators";
 
+/** Service */
+import { AlertsServiceService } from '../../alerts/alerts-service.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +16,7 @@ export class CheckInService {
 
   constructor(
     private cHttp: HttpClient,
+    private cAlertsService: AlertsServiceService
   ) { }
 
   /** Funcao para buscar, incluir e alterar os dados */
@@ -41,11 +45,11 @@ export class CheckInService {
 
     return EMPTY;
   };
-    
+
   /** Funcao para exibicao de erros */
   private catchError(_Error: any, _Mensagem: string) {
     console.log(_Error);
-    alert(_Mensagem);
+    this.cAlertsService.pop('error', _Mensagem, 5000);
 
     return EMPTY;
   };

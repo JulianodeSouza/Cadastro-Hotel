@@ -14,24 +14,27 @@
               <div class="col-lg-6 col-sm-12">
                 <div>
                   <label>Nome<span class="text-danger">*</span></label>
-                  <input class="form-control" type="text" name="nome" [(ngModel)]="iForm.nome">
+                  <input class="form-control" type="text" name="nome" [(ngModel)]="iForm.nome" (change)="validate('nome')">
+                  <p class="text-danger" *ngIf="iErro.nome">Campo obrigatório</p>
                 </div>
               </div>
               <div class="col-lg-6 col-sm-12">
                 <div>
                   <label>Documento<span class="text-danger">*</span></label>
-                  <input class="form-control" type="text" name="documento" [(ngModel)]="iForm.documento" maxlength="11">
+                  <input class="form-control" type="text" name="documento" [(ngModel)]="iForm.documento" maxlength="14" mask="000.000.000-00" (change)="validate('documento')">
+                  <p class="text-danger" *ngIf="iErro.documento">Campo obrigatório</p>
                 </div>
               </div>
               <div class="col-lg-6 col-sm-12 mt-3">
                 <div>
                   <label>Telefone<span class="text-danger">*</span></label>
-                  <input class="form-control" type="text" name="telefone" [(ngModel)]="iForm.telefone">
+                  <input class="form-control" type="text" name="telefone" [(ngModel)]="iForm.telefone" mask="(00)0?0000-0000" (change)="validate('telefone')">
+                  <p class="text-danger" *ngIf="iErro.telefone">Campo obrigatório</p>
                 </div>
               </div>
             </div>
 
-            <button type="button" class="btn-new btn btn-primary mt-4" (click)="salvarHospede()">Salvar</button>
+            <button type="button" class="btn-new btn btn-primary mt-4" (click)="saveHospede()" [disabled]="!iFormChange">Salvar</button>
           </form>
         </div>
       </div>
