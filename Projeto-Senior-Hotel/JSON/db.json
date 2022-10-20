@@ -34,10 +34,10 @@
   "checkIn": [
     {
       "id": 1,
-      "dataSaida": "2022-10-22T23:43",
-      "dataEntrada": "2022-10-22T23:37",
+      "dataSaida": "2022-10-27T18:21",
+      "dataEntrada": "2022-10-20T10:18",
       "hospedado": false,
-      "valorGasto": 0,
+      "valorGasto": 1140,
       "adicionalVeiculo": true,
       "pessoa": {
         "nome": "Eduardo Pedro Marcelo Almeida",
@@ -46,7 +46,33 @@
       }
     },
     {
-      "dataEntrada": "2022-10-19T23:49",
+      "id": 2,
+      "dataSaida": "2022-10-31T10:30",
+      "dataEntrada": "2022-10-22T18:30",
+      "hospedado": false,
+      "valorGasto": 1355,
+      "adicionalVeiculo": true,
+      "pessoa": {
+        "nome": "Aurora Débora Bianca de Paula",
+        "documento": "57684870262",
+        "telefone": "(89) 3507-8522"
+      }
+    },
+    {
+      "id": 3,
+      "dataSaida": "2022-10-20T09:44",
+      "dataEntrada": "2022-10-17T10:43",
+      "hospedado": false,
+      "valorGasto": 525,
+      "adicionalVeiculo": true,
+      "pessoa": {
+        "nome": "Francisco Hugo Osvaldo Fogaça",
+        "documento": "51580942687",
+        "telefone": "(84) 3764-5716"
+      }
+    },
+    {
+      "dataEntrada": "2022-10-20T18:58",
       "dataSaida": "",
       "adicionalVeiculo": false,
       "hospedado": true,
@@ -56,7 +82,20 @@
         "telefone": "(21) 2955-8945"
       },
       "valorGasto": 0,
-      "id": 2
+      "id": 4
+    },
+    {
+      "dataEntrada": "2022-10-12T14:00",
+      "dataSaida": "",
+      "adicionalVeiculo": true,
+      "hospedado": true,
+      "pessoa": {
+        "nome": "Aurora Débora Bianca de Paula",
+        "documento": "57684870262",
+        "telefone": "(89) 3507-8522"
+      },
+      "valorGasto": 0,
+      "id": 5
     }
   ]
 }

@@ -129,57 +129,69 @@ export class CheckInComponent {
 
   /** Funcao para calcular hospedagem */
   public calcHospedagem(_Hospede: any) {
-    let vSumTotal: number = 0;
+    /** Incrementador para os dias da semana */
+    let vSumDiasSemana: number = 0;
+    let vSumAdicionalVeiculoSemana: number = 0;
+
+    /** Incrementador para os dias do final de semana */
+    let vSumDiasFimDeSemana: number = 0;
+    let vSumAdicionalVeiculoFimDeSemana: number = 0;
+
+    /** Pega a quantidade total de dias hospedado */
     let vSumDiasHospedagem: number = 0;
-    let vSumAdicionalVeiculo: number = 0;
+
+    let vSumTotal: number = 0;
     let validaTaxaExtra: string = '';
     let data_entrada = new Date(_Hospede.dataEntrada || this.iForm.dataEntrada);
     let data_saida = new Date(_Hospede.dataSaida || this.iForm.dataSaida);
+    let possuiVeiculo = _Hospede.adicionalVeiculo;
 
     if (_Hospede.dataEntrada != '' && _Hospede.dataSaida != '') {
       if (data_saida.getDate() > data_entrada.getDate()) {
-        // If para validar se a hospedagem está em dia de semana
-        if (data_entrada.getDay() >= 1 && data_saida.getDay() <= 5) {
-          for (let index = data_entrada.getDate(); index < data_saida.getDate(); index++) {
-            vSumDiasHospedagem++
 
-            if (_Hospede.adicionalVeiculo) {
-              vSumAdicionalVeiculo++
+        let day = new Date(data_entrada);
+        while (day <= data_saida) {
+          vSumDiasHospedagem++;
+          let dt = new Date(day);
+          if (dt.getDay() >= 1 && dt.getDay() <= 5) {
+            vSumDiasSemana++;
+
+            if (possuiVeiculo || this.iForm.adicionalVeiculo) {
+              vSumAdicionalVeiculoSemana++
             }
-          };
-
-          validaTaxaExtra = data_saida.getHours() + ':' + data_saida.getMinutes();
-
-          if (validaTaxaExtra > '16:30') {
-            vSumDiasHospedagem++
-          }
-
-          if (_Hospede.adicionalVeiculo) {
-            vSumTotal = vSumDiasHospedagem * 120 + vSumAdicionalVeiculo * 15;
           } else {
-            vSumTotal = vSumDiasHospedagem * 120;
-          }
-        } else {
-          for (let index = data_entrada.getDate(); index < data_saida.getDate(); index++) {
-            vSumDiasHospedagem++
+            vSumDiasFimDeSemana++;
 
-            if (_Hospede.adicionalVeiculo) {
-              vSumAdicionalVeiculo++
+            if (possuiVeiculo || this.iForm.adicionalVeiculo) {
+              vSumAdicionalVeiculoFimDeSemana++
             }
-          };
-
-          validaTaxaExtra = data_saida.getHours() + ':' + data_saida.getMinutes();
-
-          if (validaTaxaExtra > '16:30') {
-            vSumDiasHospedagem++
           }
 
-          if (_Hospede.adicionalVeiculo) {
-            vSumTotal = vSumDiasHospedagem * 150 + vSumAdicionalVeiculo * 20;
+          let next_day = day.setDate(day.getDate() + 1);
+          day = new Date(next_day);
+        }
+
+        validaTaxaExtra = data_saida.getHours() + ':' + data_saida.getMinutes();
+
+        if (validaTaxaExtra > '16:30') {
+          vSumDiasHospedagem++;
+          if (data_saida.getDay() >= 1 && data_saida.getDay() <= 5) {
+            vSumDiasSemana++;
+
+            if (possuiVeiculo || this.iForm.adicionalVeiculo) {
+              vSumAdicionalVeiculoSemana++
+            }
           } else {
-            vSumTotal = vSumDiasHospedagem * 150;
+            vSumDiasFimDeSemana++;
+
+            if (possuiVeiculo || this.iForm.adicionalVeiculo) {
+              vSumAdicionalVeiculoFimDeSemana++
+            }
           }
         }
+
+        vSumTotal = (vSumDiasSemana * 120) + (vSumDiasFimDeSemana * 150) + (vSumAdicionalVeiculoSemana * 15) + (vSumAdicionalVeiculoFimDeSemana * 20);
+
       } else {
         this.cAlertsService.pop('warning', 'Data de Saída não pode ser menor que a data de entrada', 3000);
       }
@@ -213,12 +225,12 @@ export class CheckInComponent {
                 pessoa: wHospede.pessoa
               }
 
-              // this.cRequestCheckIn.checkInService('PUT', wHospede)
-              //   .subscribe(($retorno: any) => {
-              //     this.cAlertsService.pop('success', 'Check-out realizado com sucesso!', 5000);
-              //     this.clearCampos();
-              //     this.searchHospedes(this.iFiltros);
-              //   });
+              this.cRequestCheckIn.checkInService('PUT', wHospede)
+                .subscribe(($retorno: any) => {
+                  this.cAlertsService.pop('success', 'Check-out realizado com sucesso!', 5000);
+                  this.clearCampos();
+                  this.searchHospedes(this.iFiltros);
+                });
             }
           }
         } else {
