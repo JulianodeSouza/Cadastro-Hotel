@@ -1,5 +1,3 @@
-# Projeto Senior Hotel
-
 ## `Requisitos para rodar o JSON Server`
  - Rodar comando `npm install` dentro da pasta JSON, para instalação do node modules (somente se a pasta do node_modules não estiver);
  - Ao final da instalação, rodar o comando `npm start`, também dentro da pasta JSON para inicializar o JSON Server.
